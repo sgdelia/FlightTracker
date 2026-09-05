@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "QsfORNVyLNU=",
+  "dgSpecHash": "YuBdPU4kQK8=",
   "success": true,
-  "projectFilePath": "c:\\Users\\sgdel\\GitRoot\\FlightTrackerDemo\\FlightTracker\\FlightTracker.csproj",
+  "projectFilePath": "C:\\Users\\sgdel\\GitRoot\\FlightTrackerDemo\\FlightTracker\\FlightTracker.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\sgdel\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\sgdel\\.nuget\\packages\\microsoft.aspnetcore.openapi\\10.0.11\\microsoft.aspnetcore.openapi.10.0.11.nupkg.sha512",

@@ -4,24 +4,28 @@ namespace FlightTracker.Entities
 {
     public class Vehicle
     {
-        
         public int Id { get; set; }
         public string Name { get; set; } = string.Empty;
         public string Type { get; set; } = string.Empty;
         public string Status { get; set; } = string.Empty;
+        public List<Mission> Missions { get; set; } = new List<Mission>();
     }
     public class Mission
     {
         public int Id { get; set; }
+
+        public Vehicle? Vehicle { get; set; }
         public int VehicleId { get; set; }
         public DateTime StartTime { get; set; }
         public DateTime EndTime { get; set; }
         public string Status { get; set; } = string.Empty;
+        public List<TelemetryReading> TelemetryReadings { get; set; } = new List<TelemetryReading>();
     }
     public class TelemetryReading
     {
         public int Id { get; set; }
         public int MissionId { get; set; }
+        public Mission? Mission { get; set; }
         public DateTime Timestamp { get; set; }
         public double Latitude { get; set; }
         public double Longitude { get; set; }
@@ -29,7 +33,13 @@ namespace FlightTracker.Entities
         public double BatteryPct { get; set; }
         public double SignalStrength { get; set; }
     }
-    public class User{}
+    public class User
+    {
+        public int Id { get; set; }
+        public string Username { get; set; } = string.Empty;
+        public string PasswordHash { get; set; } = string.Empty;
+        public DateTime CreatedAt { get; set; }
+    }
 
     public class AppContext: DbContext
     {
@@ -39,5 +49,13 @@ namespace FlightTracker.Entities
         public DbSet<Mission> Missions { get; set; }
         public DbSet<TelemetryReading> TelemetryReadings { get; set; }
         public DbSet<User> Users { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Vehicle>().ToTable("Vehicles");
+            modelBuilder.Entity<Mission>().ToTable("Missions").HasOne(m => m.Vehicle).WithMany(v => v.Missions).HasForeignKey(m => m.VehicleId);
+            modelBuilder.Entity<TelemetryReading>().ToTable("TelemetryReadings").HasOne(tr => tr.Mission).WithMany(m => m.TelemetryReadings).HasForeignKey(tr => tr.MissionId);
+            modelBuilder.Entity<User>().HasIndex(u => u.Username).IsUnique();
+        }
     }
 }

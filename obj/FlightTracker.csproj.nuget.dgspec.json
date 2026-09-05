@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "c:\\Users\\sgdel\\GitRoot\\FlightTrackerDemo\\FlightTracker\\FlightTracker.csproj": {}
+    "C:\\Users\\sgdel\\GitRoot\\FlightTrackerDemo\\FlightTracker\\FlightTracker.csproj": {}
   },
   "projects": {
-    "c:\\Users\\sgdel\\GitRoot\\FlightTrackerDemo\\FlightTracker\\FlightTracker.csproj": {
+    "C:\\Users\\sgdel\\GitRoot\\FlightTrackerDemo\\FlightTracker\\FlightTracker.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "c:\\Users\\sgdel\\GitRoot\\FlightTrackerDemo\\FlightTracker\\FlightTracker.csproj",
+        "projectUniqueName": "C:\\Users\\sgdel\\GitRoot\\FlightTrackerDemo\\FlightTracker\\FlightTracker.csproj",
         "projectName": "FlightTracker",
-        "projectPath": "c:\\Users\\sgdel\\GitRoot\\FlightTrackerDemo\\FlightTracker\\FlightTracker.csproj",
+        "projectPath": "C:\\Users\\sgdel\\GitRoot\\FlightTrackerDemo\\FlightTracker\\FlightTracker.csproj",
         "packagesPath": "C:\\Users\\sgdel\\.nuget\\packages\\",
-        "outputPath": "c:\\Users\\sgdel\\GitRoot\\FlightTrackerDemo\\FlightTracker\\obj\\",
+        "outputPath": "C:\\Users\\sgdel\\GitRoot\\FlightTrackerDemo\\FlightTracker\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\sgdel\\AppData\\Roaming\\NuGet\\NuGet.Config"
