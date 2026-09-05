@@ -146,3 +146,4 @@ C:\Users\sgdel\GitRoot\FlightTrackerDemo\FlightTracker\obj\Debug\net10.0\refint\
 C:\Users\sgdel\GitRoot\FlightTrackerDemo\FlightTracker\obj\Debug\net10.0\FlightTracker.pdb
 C:\Users\sgdel\GitRoot\FlightTrackerDemo\FlightTracker\obj\Debug\net10.0\FlightTracker.genruntimeconfig.cache
 C:\Users\sgdel\GitRoot\FlightTrackerDemo\FlightTracker\obj\Debug\net10.0\ref\FlightTracker.dll
+C:\Users\sgdel\GitRoot\FlightTrackerDemo\FlightTracker\bin\Debug\net10.0\Scalar.AspNetCore.dll

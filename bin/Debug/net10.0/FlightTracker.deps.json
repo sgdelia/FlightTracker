@@ -10,7 +10,8 @@
         "dependencies": {
           "Microsoft.AspNetCore.OpenApi": "10.0.11",
           "Microsoft.EntityFrameworkCore.Design": "10.0.11",
-          "Microsoft.EntityFrameworkCore.Sqlite": "10.0.11"
+          "Microsoft.EntityFrameworkCore.Sqlite": "10.0.11",
+          "Scalar.AspNetCore": "2.17.2"
         },
         "runtime": {
           "FlightTracker.dll": {}
@@ -440,6 +441,14 @@
           }
         }
       },
+      "Scalar.AspNetCore/2.17.2": {
+        "runtime": {
+          "lib/net10.0/Scalar.AspNetCore.dll": {
+            "assemblyVersion": "2.17.2.0",
+            "fileVersion": "2.17.2.0"
+          }
+        }
+      },
       "SQLitePCLRaw.bundle_e_sqlite3/2.1.12": {
         "dependencies": {
           "SQLitePCLRaw.lib.e_sqlite3": "2.1.12",
@@ -800,6 +809,13 @@
       "sha512": "sha512-pdgNNMai3zv51W5aq268sujXUyx7SNdE2bj1wZcWjAQrKMFZV260lbqYop1d2GM67JI1huLRwxo9ZqnfF/lC6A==",
       "path": "newtonsoft.json/13.0.4",
       "hashPath": "newtonsoft.json.13.0.4.nupkg.sha512"
+    },
+    "Scalar.AspNetCore/2.17.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-ciW2HuRWJgNEecophHN9DvoRlTs/+8TNPhB6tQW1gmJWh/eoAIO0ys8XIxx7irUpIu3KRHZyxyuHstqqrTn1Tw==",
+      "path": "scalar.aspnetcore/2.17.2",
+      "hashPath": "scalar.aspnetcore.2.17.2.nupkg.sha512"
     },
     "SQLitePCLRaw.bundle_e_sqlite3/2.1.12": {
       "type": "package",
