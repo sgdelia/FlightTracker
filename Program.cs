@@ -12,6 +12,8 @@ builder.Services.AddDbContext<FlightTracker.Entities.AppContext>(options =>
 builder.Services.AddControllers();
 builder.Services.AddScoped<IVehicleService, VehicleService>();
 builder.Services.AddScoped<IMissionService, MissionService>();
+builder.Services.AddScoped<ITelemetryService, TelemetryService>();
+
 var app = builder.Build();
 
 

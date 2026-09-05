@@ -9,10 +9,11 @@ namespace FlightTracker.Controllers
     public class MissionsController : ControllerBase
     {
         private readonly IMissionService _missionService;
-
-        public MissionsController(IMissionService missionService)
+        private readonly ITelemetryService _telemetryService;
+        public MissionsController(IMissionService missionService, ITelemetryService telemetryService)
         {
             _missionService = missionService;
+            _telemetryService = telemetryService;
         }
 
         [HttpGet]
@@ -40,6 +41,34 @@ namespace FlightTracker.Controllers
             {
                 var createdMission = await _missionService.CreateMissionAsync(mission);
                 return CreatedAtAction(nameof(GetMissionById), new { id = createdMission.Id }, createdMission);
+            }
+            catch (InvalidOperationException ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        [HttpPost("{id}/telemetry")]
+        public async Task<ActionResult<List<TelemetryReading>>> IngestTelemetry(int id, List<TelemetryReading> telemetryReadings)
+        {
+            try
+            {
+                var createdReadings = await _telemetryService.IngestTelemReadingsAsync(id, telemetryReadings);
+                return Ok(createdReadings);
+            }
+            catch (InvalidOperationException ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        [HttpGet("{id}/telemetry")]
+        public async Task<ActionResult<List<TelemetryReading>>> GetTelemetry(int id, [FromQuery] DateTime? startTime = null, [FromQuery] DateTime? endTime = null, [FromQuery] int? limit = null)
+        {
+            try
+            {
+                var telemetryReadings = await _telemetryService.GetTelemReadingsAsync(id, startTime, endTime, limit);
+                return Ok(telemetryReadings);
             }
             catch (InvalidOperationException ex)
             {
