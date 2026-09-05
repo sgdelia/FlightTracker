@@ -26,8 +26,16 @@ namespace FlightTracker.Services
 
         public async Task<Vehicle> CreateVehicleAsync(Vehicle vehicle)
         {
-            _context.Vehicles.Add(vehicle);
-            await _context.SaveChangesAsync();
+            var vehicleExists = await _context.Vehicles.AnyAsync(v => v.Id == vehicle.Id); 
+            if (vehicleExists)
+            {
+                throw new InvalidOperationException($"Vehicle with ID {vehicle.Id} already exists.");
+            }
+            else
+            {
+                _context.Vehicles.Add(vehicle);
+                await _context.SaveChangesAsync();
+            }
             return vehicle;
         }
     }

@@ -13,7 +13,6 @@ namespace FlightTracker.Entities
     public class Mission
     {
         public int Id { get; set; }
-
         public Vehicle? Vehicle { get; set; }
         public int VehicleId { get; set; }
         public DateTime StartTime { get; set; }

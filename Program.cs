@@ -11,6 +11,7 @@ builder.Services.AddDbContext<FlightTracker.Entities.AppContext>(options =>
     options.UseSqlite(builder.Configuration.GetConnectionString("FlightTrackerContext") ?? throw new InvalidOperationException("Connection string 'FlightTrackerContext' not found.")));
 builder.Services.AddControllers();
 builder.Services.AddScoped<IVehicleService, VehicleService>();
+builder.Services.AddScoped<IMissionService, MissionService>();
 var app = builder.Build();
 
 
