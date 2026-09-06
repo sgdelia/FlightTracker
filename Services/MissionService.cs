@@ -35,5 +35,42 @@ namespace FlightTracker.Services
             await _context.SaveChangesAsync();
             return mission;
         }
+
+        public async Task<MissionSummaryDto?> GetMissionSummaryAsync(int id)
+        {
+            var missionExists = _context.Missions.Any(m => m.Id == id);
+            if (!missionExists)
+            {
+                return null;
+            }
+
+            var readingsQuery = _context.TelemetryReadings.Where(t => t.MissionId == id);
+            var count = await readingsQuery.CountAsync();
+            if (count == 0)
+            {
+                return new MissionSummaryDto
+                {
+                    MissionId = id,
+                    TelemetryCount = 0,
+                };
+            }
+            var maxAltitude = await readingsQuery.MaxAsync(t => t.Altitude);
+            var firstReading = await readingsQuery.OrderBy(t => t.Timestamp).FirstAsync();
+            var lastReading = await readingsQuery.OrderByDescending(t => t.Timestamp).FirstAsync();
+
+            var durationInHours = (lastReading.Timestamp - firstReading.Timestamp).TotalHours;
+            var batteryDrop = firstReading.BatteryPct - lastReading.BatteryPct;
+            var avgBatteryPctPerHour = durationInHours > 0 ? batteryDrop / durationInHours : 0;
+
+            return new MissionSummaryDto
+            {
+                MissionId = id,
+                MaxAltitude = maxAltitude,
+                AvgBatteryPctPerHour = Math.Round(avgBatteryPctPerHour, 2),
+                DurationInHours = Math.Round(durationInHours, 2),
+                TelemetryCount = count
+            };
+
+        }
     }
 }

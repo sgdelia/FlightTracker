@@ -75,5 +75,16 @@ namespace FlightTracker.Controllers
                 return BadRequest(ex.Message);
             }
         }
+
+        [HttpGet("{id}/summary")]
+        public async Task<ActionResult<MissionSummaryDto>> GetMissionSummary(int id)
+        {
+            var summary = await _missionService.GetMissionSummaryAsync(id);
+            if (summary == null)
+            {
+                return NotFound();
+            }
+            return Ok(summary);
+        }
     }
 }
