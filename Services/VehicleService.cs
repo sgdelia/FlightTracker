@@ -16,7 +16,7 @@ namespace FlightTracker.Services
 
         public async Task<List<Vehicle>> GetAllVehiclesAsync()
         {
-            return await _context.Vehicles.Include(v => v.Missions).ToListAsync();
+            return await _context.Vehicles.ToListAsync();
         }
 
         public async Task<Vehicle?> GetVehicleByIdAsync(int id)

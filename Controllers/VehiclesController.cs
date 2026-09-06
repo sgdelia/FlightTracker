@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using FlightTracker.Entities;
 using FlightTracker.Services;
+using Microsoft.AspNetCore.Authorization;
 
 namespace FlightTracker.Controllers
 {
@@ -34,6 +35,7 @@ namespace FlightTracker.Controllers
         }
 
         [HttpPost]
+        [Authorize]
         public async Task<ActionResult<Vehicle>> CreateVehicle(Vehicle vehicle)
         {
             var createdVehicle = await _vehicleService.CreateVehicleAsync(vehicle);
